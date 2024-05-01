@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  front-end:
+    build:
+      context: .
+      dockerfile: docker-front
+    ports:
+      - "4200:4200"
+    networks:
+      - mi-red
+    container_name: Dock-front
+
+  back-end:
+    build:
+      context: .
+      dockerfile: docker-back
+
+    ports:
+      - "3000:3000"
+    networks:
+      - mi-red
+
+    container_name: Dock-back
+
+
+networks:
+
+  mi-red:
+    name: mi-red
